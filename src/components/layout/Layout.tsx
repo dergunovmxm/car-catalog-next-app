@@ -1,12 +1,25 @@
 import { FC, PropsWithChildren } from "react";
 import Header from "./header/Header";
+import Meta from "../ui/Meta";
+import { IMeta } from "../ui/meta.interface";
+import Footer from "./Footer";
+import dynamic from "next/dynamic";
 
-const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
+const DynamicFooter = dynamic(() => import("./Footer"), {
+  ssr: false,
+});
+
+const Layout: FC<PropsWithChildren<IMeta>> = ({
+  children,
+  title,
+  description,
+}) => {
   return (
-    <>
+    <Meta title={title} description={description}>
       <Header />
       <main>{children}</main>
-    </>
+      <DynamicFooter />
+    </Meta>
   );
 };
 

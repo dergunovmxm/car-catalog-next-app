@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { Titillium_Web } from "next/font/google";
 import Layout from "@/components/layout/Layout";
 import Header from "@/components/layout/header/Header";
+import Head from "next/head";
 
 export const titillium = Titillium_Web({
   subsets: ["latin"],
@@ -10,9 +11,11 @@ export const titillium = Titillium_Web({
 
 const Home: FC = () => {
   return (
-    <Layout>
-      <h1 className={titillium.className}>Test font header</h1>
-    </Layout>
+    <>
+      <Layout title="Homepage">
+        <h1 className={`${titillium.className}`}>Test font header</h1>
+      </Layout>
+    </>
   );
 };
 
